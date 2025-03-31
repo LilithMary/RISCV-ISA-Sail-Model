@@ -34,6 +34,61 @@ The following `sail` files are excluded:
 
 - **rvfi_dii.sail**
   - **Reason:** Other RVFI (RISC-V Formal Interface) files above were excluded
+
+## Module Dependency Graph
+
+```mermaid
+graph TD;
+    Prelude --> RegTypes;
+    Prelude --> Regs;
+    Prelude --> PMP;
+    Prelude --> PrivilegeTransition;
+    Prelude --> PhysicalMemory;
+    Prelude --> VirtualMemory;
+    Prelude --> Misc;
+    Prelude --> Instructions;
+    Prelude --> Main;
+    
+    RegTypes --> Regs;
+    RegTypes --> PMP;
+    RegTypes --> PrivilegeTransition;
+    RegTypes --> PhysicalMemory;
+    RegTypes --> VirtualMemory;
+    RegTypes --> Misc;
+    RegTypes --> Instructions;
+    RegTypes --> Main;
+
+    Regs --> PMP;
+    Regs --> PrivilegeTransition;
+    Regs --> PhysicalMemory;
+    Regs --> VirtualMemory;
+    Regs --> Misc;
+    Regs --> Instructions;
+    Regs --> Main;
+
+    PMP --> PrivilegeTransition;
+    PMP --> PhysicalMemory;
+    
+    PrivilegeTransition --> PhysicalMemory;
+    PrivilegeTransition --> VirtualMemory;
+    PrivilegeTransition --> Misc;
+    PrivilegeTransition --> Instructions;
+    PrivilegeTransition --> Main;
+
+    PhysicalMemory --> VirtualMemory;
+    PhysicalMemory --> Misc;
+    PhysicalMemory --> Instructions;
+    PhysicalMemory --> Main;
+    
+    VirtualMemory --> Instructions;
+    VirtualMemory --> Main;
+
+    Misc --> Instructions;
+    Misc --> Main;
+
+    Instructions --> Main;
+
+
  
 ## Usage
 1. Install [Sail](https://github.com/rems-project/sail)
