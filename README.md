@@ -38,12 +38,10 @@ The following `sail` files are excluded:
   - **Reason:** Other RVFI (RISC-V Formal Interface) files above were excluded
  
 ## Usage
-Download the `.sail_project` and move it to the `sail-riscv-master/model` folder.<br />
-Navigate to this folder and invoke `sail` as follows using your desired options:
-
-```
-sail <options> riscv.sail_project
-```
+1. Install [Sail](https://github.com/rems-project/sail)
+2. Download `sail-riscv-master` from [RISCV Sail Model repository](https://github.com/riscv/sail-riscv/tree/master) and build a RISC-V simulator.
+3. Download the `.sail_project` file in this repository and move it to the `sail-riscv-master/model` folder.
+4. On the Command Line Interface, navigate to the `sail-riscv-master/model` folder and invoke `sail` as follows using your desired options: `sail <options> riscv.sail_project`
 
 ### Type Checking
 `sail riscv.sail_project`
