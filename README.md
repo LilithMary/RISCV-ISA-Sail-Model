@@ -38,6 +38,9 @@ The following `sail` files are excluded:
 ## Module Dependency Graph
 
 ```mermaid
+<style>
+svg[id^="mermaid-"] { min-width: 200px; max-width: 500px; }
+</style>
 graph TD;
     Prelude --> RegTypes;
     Prelude --> Regs;
