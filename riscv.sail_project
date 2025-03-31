@@ -1,6 +1,6 @@
 /* 
 ========== MODULE STRUCTURE FOR RISC-V ISA SAIL MODELS ==========
- This file defines a compilation order of RISC-V Sail models 
+ This file defines a compilation order of RISC-V Sail model files 
  which is consistent with their dependencies.
  
  @author: Maryam Ghaffari Saadat, University of Bristol
