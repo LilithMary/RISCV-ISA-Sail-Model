@@ -12,8 +12,8 @@ The dependency structure is loosely based on [the Reading Guide](https://github.
 
 The following Sail files are excluded due to conflicts:
 
-- **riscv_flen_D.sail** (Double-precision floating-point extension)  
-  - **Reason:** Conflicts with `riscv_flen_F.sail` (Single-precision floating-point extension)  
+- **riscv_flen_D.sail** (double-precision floating-point extension)  
+  - **Reason:** Conflicts with `riscv_flen_F.sail` (single-precision floating-point extension)  
   - **Conflict:** Both declare `type flen_bytes`
 
 - **riscv_step_rvfi.sail**  
