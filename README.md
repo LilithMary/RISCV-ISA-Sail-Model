@@ -24,13 +24,13 @@ Each module consists of a sequence of `sail` files treated as a logical unit. If
 The following `sail` files are excluded:
 
 - **riscv_flen_D.sail** (double-precision floating-point extension)  
-  - **Reason:** Defines `type flen_bytes` which clashes with `riscv_flen_F.sail` (single-precision floating-point extension)
+  - **Reason:** It defines `type flen_bytes`, which clashes with `riscv_flen_F.sail` (single-precision floating-point extension)
 
 - **riscv_step_rvfi.sail**  
-  - **Reason:** Defines `function ext_fetch_hook` which clashes with `riscv_step.sail`
+  - **Reason:** It defines `function ext_fetch_hook`, which clashes with `riscv_step.sail`
 
 - **riscv_fetch_rvfi.sail**  
-  - **Reason:** Defines `function fetch` which clashes with `riscv_fetch.sail` 
+  - **Reason:** It defines `function fetch`, which clashes with `riscv_fetch.sail` 
 
 - **rvfi_dii.sail**
   - **Reason:** Other RVFI (RISC-V Formal Interface) files above were excluded
