@@ -1,5 +1,5 @@
 # Module Structure for RISCV ISA Sail Models
-This repository provides a dependency structure for [`sail` models](https://github.com/riscv/sail-riscv) specifying the RISC-V ISA.
+This repository provides a dependency structure for [Sail models](https://github.com/riscv/sail-riscv) specifying the RISC-V ISA.
 
 ## Why?
 When compiling `sail` files, the order matters. For example, if `file1.sail` imports a library or contains a definition used by `file2.sail`, compiling them in the wrong order will cause an error: <br />
@@ -15,8 +15,11 @@ To avoid this, dependencies must be compiled first:<br />
 
 In large projects like Sail-RISCV, determining a correct order can be challenging. The module structure in this repository ensures each `sail` file is compiled only after its dependencies, maintaining a valid compilation sequence.
 
+```sail riscv.sail_project```
+
+
 ## Sail Project
-This `.sail_project` file provides a dependency structure based on [the Reading Guide](https://github.com/riscv/sail-riscv/blob/master/doc/ReadingGuide.md) by organising `sail` files into modules and declaring module dependencies.
+This `.sail_project` file provides a dependency structure based on [the Reading Guide](https://github.com/riscv/sail-riscv/blob/master/doc/ReadingGuide.md) by organising `sail` files into modules and declaring module dependencies according to [the Sail Modules Guide](https://github.com/rems-project/sail/blob/sail2/doc/asciidoc/modules.adoc).
 
 Each module consists of a sequence of `sail` files treated as a logical unit. If a module requires definitions from another module, it declares a dependency using the `requires` statement. 
 
