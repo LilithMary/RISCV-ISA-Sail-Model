@@ -35,28 +35,28 @@ The following `sail` files are excluded:
 - **rvfi_dii.sail**
   - **Reason:** Other RVFI (RISC-V Formal Interface) files above were excluded
 
-## Module Dependency Structure
-- Prelude (Core types and definitions)
-- RegTypes (Core register types)
+## Module Dependencies
+- **Prelude** (Core types and definitions)
+- **RegTypes** (Core register types)
   - Requires: Prelude
-- Regs (General-purpose and system registers)
+- **Regs** (General-purpose and system registers)
   - Requires: Prelude, RegTypes
-- PMP (Physical Memory Protection)
+- **PMP** (Physical Memory Protection)
   - Requires: Prelude, RegTypes, Regs
-- PrivilegeTransition (Privilege transitions and exceptions)
+- **PrivilegeTransition** (Privilege transitions and exceptions)
   - Requires: Prelude, RegTypes, Regs, PMP
-- PhysicalMemory (Handling physical memory)
+- **PhysicalMemory** (Handling physical memory)
   - Requires: Prelude, RegTypes, Regs, PMP, PrivilegeTransition
-- VirtualMemory (Page tables and virtual memory translation)
+- **VirtualMemory** (Page tables and virtual memory translation)
   - Requires: Prelude, RegTypes, Regs, PrivilegeTransition, PhysicalMemory
-- Misc (Miscellaneous extensions and interfaces)
+- **Misc** (Miscellaneous extensions and interfaces)
   - Requires: Prelude, RegTypes, Regs, PrivilegeTransition, PhysicalMemory
-- Instructions (Instruction set definitions)
+- **Instructions** (Instruction set definitions)
   - Requires: Prelude, RegTypes, Regs, PrivilegeTransition, PhysicalMemory, VirtualMemory, Misc
-- Main (Core execution logic)
+- **Main** (Core execution logic)
   - Requires: Prelude, RegTypes, Regs, PrivilegeTransition, PhysicalMemory, VirtualMemory, Instructions
 
-### Dependency Graph 
+### Module Dependency Graph 
 ```mermaid
 graph LR;
     RegTypes -->|depends on| Prelude;
