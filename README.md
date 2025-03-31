@@ -4,7 +4,8 @@ This repository provides a module structure for [`sail` models](https://github.c
 ## Why?
 When compiling `sail` files, the order matters. For example, if `file1.sail` imports a library or contains a definition used by `file2.sail`, compiling them in the wrong order will cause an error: <br />
 
-```sail file2.sail file1.sail
+```
+sail file2.sail file1.sail
 Type error: Unknown type level operator or function
 ```
 
