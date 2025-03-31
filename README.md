@@ -39,54 +39,54 @@ The following `sail` files are excluded:
 
 ```mermaid
 graph LR;
-    Prelude -->|depends on| RegTypes;
-    Prelude -->|depends on| Regs;
-    Prelude -->|depends on| PMP;
-    Prelude -->|depends on| PrivilegeTransition;
-    Prelude -->|depends on| PhysicalMemory;
-    Prelude -->|depends on| VirtualMemory;
-    Prelude -->|depends on| Misc;
-    Prelude -->|depends on| Instructions;
-    Prelude -->|depends on| Main;
+    Prelude <--|depends on| RegTypes;
+    Prelude <--|depends on| Regs;
+    Prelude <--|depends on| PMP;
+    Prelude <--|depends on| PrivilegeTransition;
+    Prelude <--|depends on| PhysicalMemory;
+    Prelude <--|depends on| VirtualMemory;
+    Prelude <--|depends on| Misc;
+    Prelude <--|depends on| Instructions;
+    Prelude <--|depends on| Main;
     
-    RegTypes -->|depends on| Regs;
-    RegTypes -->|depends on| PMP;
-    RegTypes -->|depends on| PrivilegeTransition;
-    RegTypes -->|depends on| PhysicalMemory;
-    RegTypes -->|depends on| VirtualMemory;
-    RegTypes -->|depends on| Misc;
-    RegTypes -->|depends on| Instructions;
-    RegTypes -->|depends on| Main;
+    RegTypes <--|depends on| Regs;
+    RegTypes <--|depends on| PMP;
+    RegTypes <--|depends on| PrivilegeTransition;
+    RegTypes <--|depends on| PhysicalMemory;
+    RegTypes <--|depends on| VirtualMemory;
+    RegTypes <--|depends on| Misc;
+    RegTypes <--|depends on| Instructions;
+    RegTypes <--|depends on| Main;
 
-    Regs -->|depends on| PMP;
-    Regs -->|depends on| PrivilegeTransition;
-    Regs -->|depends on| PhysicalMemory;
-    Regs -->|depends on| VirtualMemory;
-    Regs -->|depends on| Misc;
-    Regs -->|depends on| Instructions;
-    Regs -->|depends on| Main;
+    Regs <--|depends on| PMP;
+    Regs <--|depends on| PrivilegeTransition;
+    Regs <--|depends on| PhysicalMemory;
+    Regs <--|depends on| VirtualMemory;
+    Regs <--|depends on| Misc;
+    Regs <--|depends on| Instructions;
+    Regs <--|depends on| Main;
 
-    PMP -->|depends on| PrivilegeTransition;
-    PMP -->|depends on| PhysicalMemory;
+    PMP <--|depends on| PrivilegeTransition;
+    PMP <--|depends on| PhysicalMemory;
     
-    PrivilegeTransition -->|depends on| PhysicalMemory;
-    PrivilegeTransition -->|depends on| VirtualMemory;
-    PrivilegeTransition -->|depends on| Misc;
-    PrivilegeTransition -->|depends on| Instructions;
-    PrivilegeTransition -->|depends on| Main;
+    PrivilegeTransition <--|depends on| PhysicalMemory;
+    PrivilegeTransition <--|depends on| VirtualMemory;
+    PrivilegeTransition <--|depends on| Misc;
+    PrivilegeTransition <--|depends on| Instructions;
+    PrivilegeTransition <--|depends on| Main;
 
-    PhysicalMemory -->|depends on| VirtualMemory;
-    PhysicalMemory -->|depends on| Misc;
-    PhysicalMemory -->|depends on| Instructions;
-    PhysicalMemory -->|depends on| Main;
+    PhysicalMemory <--|depends on| VirtualMemory;
+    PhysicalMemory <--|depends on| Misc;
+    PhysicalMemory <--|depends on| Instructions;
+    PhysicalMemory <--|depends on| Main;
     
-    VirtualMemory -->|depends on| Instructions;
-    VirtualMemory -->|depends on| Main;
+    VirtualMemory <--|depends on| Instructions;
+    VirtualMemory <--|depends on| Main;
 
-    Misc -->|depends on| Instructions;
-    Misc -->|depends on| Main;
+    Misc <--|depends on| Instructions;
+    Misc <--|depends on| Main;
 
-    Instructions -->|depends on| Main;
+    Instructions <--|depends on| Main;
 
 ```
 
