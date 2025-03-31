@@ -37,7 +37,7 @@ The following `sail` files are excluded:
  
 ## Usage
 1. Install [Sail](https://github.com/rems-project/sail)
-2. Download `sail-riscv-master` from [RISCV Sail Model repository](https://github.com/riscv/sail-riscv/tree/master) and build a RISC-V simulator.
+2. Download `sail-riscv-master` from [RISCV Sail Model repository](https://github.com/riscv/sail-riscv/tree/master) and build the RISC-V model.
 3. Download the `.sail_project` file in this repository. Move it to the `sail-riscv-master/model` folder.
 4. On the Command Line Interface, navigate to the `sail-riscv-master/model` folder and invoke `sail` as follows using your desired options: `sail <options> riscv.sail_project`
      For example, for type checking: `sail riscv.sail_project`
