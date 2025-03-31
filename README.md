@@ -38,58 +38,56 @@ The following `sail` files are excluded:
 ## Module Dependency Graph
 
 ```mermaid
-<style>
-svg[id^="mermaid-"] { min-width: 200px; max-width: 500px; }
-</style>
-graph TD;
-    Prelude --> RegTypes;
-    Prelude --> Regs;
-    Prelude --> PMP;
-    Prelude --> PrivilegeTransition;
-    Prelude --> PhysicalMemory;
-    Prelude --> VirtualMemory;
-    Prelude --> Misc;
-    Prelude --> Instructions;
-    Prelude --> Main;
+graph LR;
+    Prelude -->|depends on| RegTypes;
+    Prelude -->|depends on| Regs;
+    Prelude -->|depends on| PMP;
+    Prelude -->|depends on| PrivilegeTransition;
+    Prelude -->|depends on| PhysicalMemory;
+    Prelude -->|depends on| VirtualMemory;
+    Prelude -->|depends on| Misc;
+    Prelude -->|depends on| Instructions;
+    Prelude -->|depends on| Main;
     
-    RegTypes --> Regs;
-    RegTypes --> PMP;
-    RegTypes --> PrivilegeTransition;
-    RegTypes --> PhysicalMemory;
-    RegTypes --> VirtualMemory;
-    RegTypes --> Misc;
-    RegTypes --> Instructions;
-    RegTypes --> Main;
+    RegTypes -->|depends on| Regs;
+    RegTypes -->|depends on| PMP;
+    RegTypes -->|depends on| PrivilegeTransition;
+    RegTypes -->|depends on| PhysicalMemory;
+    RegTypes -->|depends on| VirtualMemory;
+    RegTypes -->|depends on| Misc;
+    RegTypes -->|depends on| Instructions;
+    RegTypes -->|depends on| Main;
 
-    Regs --> PMP;
-    Regs --> PrivilegeTransition;
-    Regs --> PhysicalMemory;
-    Regs --> VirtualMemory;
-    Regs --> Misc;
-    Regs --> Instructions;
-    Regs --> Main;
+    Regs -->|depends on| PMP;
+    Regs -->|depends on| PrivilegeTransition;
+    Regs -->|depends on| PhysicalMemory;
+    Regs -->|depends on| VirtualMemory;
+    Regs -->|depends on| Misc;
+    Regs -->|depends on| Instructions;
+    Regs -->|depends on| Main;
 
-    PMP --> PrivilegeTransition;
-    PMP --> PhysicalMemory;
+    PMP -->|depends on| PrivilegeTransition;
+    PMP -->|depends on| PhysicalMemory;
     
-    PrivilegeTransition --> PhysicalMemory;
-    PrivilegeTransition --> VirtualMemory;
-    PrivilegeTransition --> Misc;
-    PrivilegeTransition --> Instructions;
-    PrivilegeTransition --> Main;
+    PrivilegeTransition -->|depends on| PhysicalMemory;
+    PrivilegeTransition -->|depends on| VirtualMemory;
+    PrivilegeTransition -->|depends on| Misc;
+    PrivilegeTransition -->|depends on| Instructions;
+    PrivilegeTransition -->|depends on| Main;
 
-    PhysicalMemory --> VirtualMemory;
-    PhysicalMemory --> Misc;
-    PhysicalMemory --> Instructions;
-    PhysicalMemory --> Main;
+    PhysicalMemory -->|depends on| VirtualMemory;
+    PhysicalMemory -->|depends on| Misc;
+    PhysicalMemory -->|depends on| Instructions;
+    PhysicalMemory -->|depends on| Main;
     
-    VirtualMemory --> Instructions;
-    VirtualMemory --> Main;
+    VirtualMemory -->|depends on| Instructions;
+    VirtualMemory -->|depends on| Main;
 
-    Misc --> Instructions;
-    Misc --> Main;
+    Misc -->|depends on| Instructions;
+    Misc -->|depends on| Main;
 
-    Instructions --> Main;
+    Instructions -->|depends on| Main;
+
 ```
 
  
