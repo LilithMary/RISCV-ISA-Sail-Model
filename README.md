@@ -23,9 +23,16 @@ Each module consists of a sequence of `sail` files treated as a logical unit. If
 ### Exluded Files
 The following `sail` files are excluded:
 
+#### Bitwidth: 32 vs 64
+- **riscv_xlen64.sail** (64-bit register width)
+  - **Reason:** The 32-bit width, `riscv_xlen32.sail`, is included instead
+#### Floating-point: Single- vs Double- Precision
 - **riscv_flen_D.sail** (double-precision floating-point extension)  
   - **Reason:** It defines `type flen_bytes`, which clashes with `riscv_flen_F.sail` (single-precision floating-point extension)
+- **riscv_insts_dext.sail** (double-precision floating-point extension)
+  - **Reason:** Other double-precision definitions in the above file are excluded
 
+#### RISC-V Formal Interface (RVFI)
 - **riscv_step_rvfi.sail**  
   - **Reason:** It defines `function ext_fetch_hook`, which clashes with `riscv_step.sail`
 
@@ -33,7 +40,18 @@ The following `sail` files are excluded:
   - **Reason:** It defines `function fetch`, which clashes with `riscv_fetch.sail` 
 
 - **rvfi_dii.sail**
-  - **Reason:** Other RVFI (RISC-V Formal Interface) files above were excluded
+  - **Reason:** Other RVFI  files above were excluded
+
+#### Memory Model: Sequential vs Concurrent
+- **riscv_jalr_rmem.sail** (memory model for non-sequential execution)
+  - **Reason:** The sequential model, `riscv_jalr_seq.sail`, is included instead
+
+- **riscv_insts_rmem.sail**
+  - **Reason:** Other related file above is excluded
+
+#### Coq Related
+- **riscv_termination.sail**
+  - **Reason:** It is only required for Coq compilation target
 
 ## Module Dependencies
 - **Prelude** (Core types and definitions)
@@ -41,70 +59,42 @@ The following `sail` files are excluded:
   - Requires: Prelude
 - **Regs** (General-purpose and system registers)
   - Requires: Prelude, RegTypes
-- **PMP** (Physical Memory Protection)
+- **SystemControl** (Privilege transitions and exceptions)
   - Requires: Prelude, RegTypes, Regs
-- **PrivilegeTransition** (Privilege transitions and exceptions)
-  - Requires: Prelude, RegTypes, Regs, PMP
-- **PhysicalMemory** (Handling physical memory)
-  - Requires: Prelude, RegTypes, Regs, PMP, PrivilegeTransition
 - **VirtualMemory** (Page tables and virtual memory translation)
-  - Requires: Prelude, RegTypes, Regs, PrivilegeTransition, PhysicalMemory
-- **Misc** (Miscellaneous extensions and interfaces)
-  - Requires: Prelude, RegTypes, Regs, PrivilegeTransition, PhysicalMemory
-- **Instructions** (Instruction set definitions)
-  - Requires: Prelude, RegTypes, Regs, PrivilegeTransition, PhysicalMemory, VirtualMemory, Misc
+  - Requires: Prelude, RegTypes, Regs, SystemControl
+- **Instructions** (Instruction set definitions and memory model)
+  - Requires: Prelude, RegTypes, Regs, SystemControl, VirtualMemory
 - **Main** (Core execution logic)
-  - Requires: Prelude, RegTypes, Regs, PrivilegeTransition, PhysicalMemory, VirtualMemory, Instructions
+  - Requires: Prelude, RegTypes, Regs, SystemControl, VirtualMemory, Instructions
 
 ### Module Dependency Graph 
 ```mermaid
 graph LR;
     RegTypes -->|depends on| Prelude;
     Regs -->|depends on| Prelude;
-    PMP -->|depends on| Prelude;
-    PrivilegeTransition -->|depends on| Prelude;
-    PhysicalMemory -->|depends on| Prelude;
+    SystemControl -->|depends on| Prelude;
     VirtualMemory -->|depends on| Prelude;
-    Misc -->|depends on| Prelude;
     Instructions -->|depends on| Prelude;
     Main -->|depends on| Prelude;
     
     Regs -->|depends on| RegTypes;
-    PMP -->|depends on| RegTypes;
-    PrivilegeTransition -->|depends on| RegTypes;
-    PhysicalMemory -->|depends on| RegTypes;
+    SystemControl -->|depends on| RegTypes;
     VirtualMemory -->|depends on| RegTypes;
-    Misc -->|depends on| RegTypes;
     Instructions -->|depends on| RegTypes;
     Main -->|depends on| RegTypes;
 
-    PMP -->|depends on| Regs;
-    PrivilegeTransition -->|depends on| Regs;
-    PhysicalMemory -->|depends on| Regs;
+    SystemControl -->|depends on| Regs;
     VirtualMemory -->|depends on| Regs;
-    Misc -->|depends on| Regs;
     Instructions -->|depends on| Regs;
     Main -->|depends on| Regs;
 
-    PrivilegeTransition -->|depends on| PMP;
-    PhysicalMemory -->|depends on| PMP;
-
-    PhysicalMemory -->|depends on| PrivilegeTransition;
-    VirtualMemory -->|depends on| PrivilegeTransition;
-    Misc -->|depends on| PrivilegeTransition;
-    Instructions -->|depends on| PrivilegeTransition;
-    Main -->|depends on| PrivilegeTransition;
-
-    VirtualMemory -->|depends on| PhysicalMemory;
-    Misc -->|depends on| PhysicalMemory;
-    Instructions -->|depends on| PhysicalMemory;
-    Main -->|depends on| PhysicalMemory;
+    VirtualMemory -->|depends on| SystemControl;
+    Instructions -->|depends on| SystemControl;
+    Main -->|depends on| SystemControl;
 
     Instructions -->|depends on| VirtualMemory;
     Main -->|depends on| VirtualMemory;
-
-    Instructions -->|depends on| Misc;
-    Main -->|depends on| Misc;
 
     Main -->|depends on| Instructions;
 
