@@ -1,6 +1,8 @@
 # Module Structure for RISCV ISA Sail Model
 This repository provides a modular dependency structure for the [Sail model](https://github.com/riscv/sail-riscv) specifying the RISC-V ISA.
 
+Special thanks to Alasdair Armstrong for his invaluable guidance.
+
 ## Why?
 While compiling `sail` files, the order matters. If `file2.sail` depends on definitions from `file1.sail`, compiling them in the wrong order will result in an error: <br />
 
