@@ -8,7 +8,8 @@
  Based on the Reading Guide (https://github.com/riscv/sail-riscv/blob/master/doc/ReadingGuide.md), 
  Modular Sail Specifications Guide (https://github.com/rems-project/sail/blob/sail2/doc/asciidoc/modules.adoc), 
  and CMakeLists.txt (https://github.com/riscv/sail-riscv/blob/master/model/CMakeLists.txt). 
- Especial thanks to Alasdair Armstrong for his helpful guidance.
+ 
+ Special thanks to Alasdair Armstrong for his invaluable guidance.
 */
 
 
