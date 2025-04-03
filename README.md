@@ -23,7 +23,7 @@ Each module consists of a sequence of `sail` files treated as a logical unit. If
 ### Exluded Files
 The following `sail` files are excluded:
 
-#### Bitwidth: 32 vs 64
+#### Register Bitwidth: 32 vs 64
 - **riscv_xlen64.sail** (64-bit register width)
   - **Reason:** The 32-bit width, `riscv_xlen32.sail`, is included instead
 #### Floating-point: Single- vs Double- Precision
