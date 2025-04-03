@@ -56,18 +56,19 @@ The following `sail` files are excluded:
   - **Reason:** It is only required for Coq compilation target
 
 ## Module Dependencies
-- **Prelude** (Core types and definitions)
-- **RegTypes** (Core register types)
+Every module below depends on all modules that precede it in the list.
+1. **Prelude** (Core types and definitions)
+2. **RegTypes** (Core register types)
   - Requires: Prelude
-- **Regs** (General-purpose and system registers)
+3. **Regs** (General-purpose and system registers)
   - Requires: Prelude, RegTypes
-- **SystemControl** (Privilege transitions and exceptions)
+4. **SystemControl** (Privilege transitions and exceptions)
   - Requires: Prelude, RegTypes, Regs
-- **VirtualMemory** (Page tables and virtual memory translation)
+5. **VirtualMemory** (Page tables and virtual memory translation)
   - Requires: Prelude, RegTypes, Regs, SystemControl
-- **Instructions** (Instruction set definitions and memory model)
+6. **Instructions** (Instruction set definitions and memory model)
   - Requires: Prelude, RegTypes, Regs, SystemControl, VirtualMemory
-- **Main** (Core execution logic)
+7. **Main** (Core execution logic)
   - Requires: Prelude, RegTypes, Regs, SystemControl, VirtualMemory, Instructions
 
 ### Module Dependency Graph 
